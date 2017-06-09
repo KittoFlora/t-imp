@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/libgpg-error/CMakeFiles/EP_libgpg-error"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/libgpg-error/CMakeFiles/EP_libgpg-error.rule"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/libgpg-error/CMakeFiles/EP_libgpg-error-complete.rule"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/libgpg-error/libgpg-error-1.0/src/EP_libgpg-error-stamp/EP_libgpg-error-install.rule"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/libgpg-error/libgpg-error-1.0/src/EP_libgpg-error-stamp/EP_libgpg-error-mkdir.rule"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/libgpg-error/libgpg-error-1.0/src/EP_libgpg-error-stamp/EP_libgpg-error-download.rule"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/libgpg-error/libgpg-error-1.0/src/EP_libgpg-error-stamp/EP_libgpg-error-update.rule"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/libgpg-error/libgpg-error-1.0/src/EP_libgpg-error-stamp/EP_libgpg-error-patch.rule"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/libgpg-error/libgpg-error-1.0/src/EP_libgpg-error-stamp/EP_libgpg-error-configure.rule"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/libgpg-error/libgpg-error-1.0/src/EP_libgpg-error-stamp/EP_libgpg-error-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"EP_libgpg-error"
+		],
+		"name" : "EP_libgpg-error"
+	}
+}

@@ -1,0 +1,265 @@
+// tsctp.c  TPS SCTP handler
+
+#include <netdb.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/time.h>
+#include <errno.h>
+#include <netinet/sctp.h>
+#include <uuid/uuid.h>
+#include <openssl/md5.h>
+
+#include "kftsctp.h"
+#include "kfhandlers.h"
+//#include "tps_messages.h"
+
+#define AV_NAME_SIZE 16
+#define AV_PW_SIZE 32		// hashed password 
+//#define SUCCESS 0
+//#define FAILURE -1
+
+//extern unsigned char Str0_buff[MAX_MSG];	//##kf  stream 0 message buffer
+//extern int           Str0_type;				//##kf  > 0  if there is a stream 0 message waiting
+
+char NameF[AV_NAME_SIZE + 1];		// fixed, FIRST
+char NameL[AV_NAME_SIZE + 1];		// fixed, LAST
+char Passwd[AV_PW_SIZE + 1];
+int Sfd = 0;	// Server file descriptor for socket
+
+
+int server_connect(const char* ip, const char* port){
+
+// Enable SCTP in indra/cmake/00-Common.cmake if you want SCTP comms rather than TCP ?
+	struct addrinfo hints;
+	struct addrinfo *result, *rp;
+
+	int error;
+
+	if(Sfd != 0) return(-3);	// already connected!
+	
+	/* Obtain address(es) matching host/port */
+	memset(&hints, 0, sizeof(struct addrinfo));
+	hints.ai_family = AF_UNSPEC;	/* Allow IPv4 or IPv6 */
+	hints.ai_socktype = SOCK_STREAM; 
+	hints.ai_flags = 0;
+#ifdef SCTP
+	hints.ai_protocol = IPPROTO_SCTP;
+#else
+	hints.ai_protocol = IPPROTO_TCP;
+#endif
+	error = getaddrinfo(ip, port, &hints, &result);
+	if (error != 0) {
+		printf("Error: getaddrinfo: %s\n", gai_strerror(error));
+		return(-1);
+	}
+
+	/* getaddrinfo() returns a list of address structures.
+	Try each address until we successfully connect(2).
+	If socket(2) (or connect(2)) fails, we (close the socket
+	and) try the next address. */
+
+	for (rp = result; rp != NULL; rp = rp->ai_next) {
+		Sfd = socket(rp->ai_family, rp->ai_socktype, rp->ai_protocol);
+		if (Sfd == -1) continue;  // failed
+		if (connect(Sfd, rp->ai_addr, rp->ai_addrlen) != -1)
+			break;	// Success!
+		close(Sfd); // try the next one
+	}
+
+	if (rp == NULL) { // No address succeeded
+		fprintf(stderr, "Could not connect\n");
+		return(-2);
+	} // else rp contains the address that we have connected to
+
+	freeaddrinfo(result);	// No longer needed
+	
+#ifdef SCTP
+	/* Enable receipt of SCTP Snd/Rcv Data via sctp_recvmsg */
+	struct sctp_event_subscribe events;
+	memset( (void *)&events, 0, sizeof(events) );
+	events.sctp_data_io_event = 1;
+	error = setsockopt( Sfd, SOL_SCTP, SCTP_EVENTS,
+						   (const void *)&events, sizeof(events) );
+#else
+
+
+#endif
+
+	// set non-blocking
+	int flags = fcntl(Sfd, F_GETFL, 0);
+	fcntl(Sfd, F_SETFL, flags | O_NONBLOCK);
+
+	/* Read and emit the status of the Socket (optional step) * /
+	in = sizeof(status);
+	ret = getsockopt( Sfd, SOL_SCTP, SCTP_STATUS,
+					 (void *)&status, (socklen_t *)&in );
+	printf("assoc id	= %d\n", status.sstat_assoc_id );
+	printf("state	 = %d\n", status.sstat_state );
+	printf("instrms   = %d\n", status.sstat_instrms );
+	printf("outstrms  = %d\n", status.sstat_outstrms );   */
+
+	return(0);
+}
+
+int server_disconnect(){	// is this used anywhere? Was tsctp_disconnect
+	if(Sfd == 0) return(-1);	// not connected!
+	close(Sfd);
+	Sfd = 0;
+	return(0);
+}
+
+
+//##kft routines for dealing with tritium/sctp messages  vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
+// Try get a sctp packet. Returns 0 if no message, -1 if disconnected, else stream + type 
+
+//Old:  if it fails, do nothing; if it gets a Stream 0 packet, park it in stream 0 buffer
+//   if it gets Stream 5 packet, send it to image-processing, which will fetch another packet, until
+//	 no longer a stream 5.
+
+int get_server_packet(unsigned char* server_buffer){
+	// The packet is the same whether received via SCTP or TCP
+	int length = 0;
+	int flags = 0;
+	int type;
+	char notif[9];
+	type = 0;
+
+#ifdef SCTP		
+	struct sctp_sndrcvinfo sndrcvinfo;
+	length = sctp_recvmsg(Sfd, (void *)server_buffer, MAX_MSG,
+		(struct sockaddr *)NULL, 0, &sndrcvinfo, &flags );
+//	printf("Got %d chars\n", length);  
+
+	if(flags & MSG_NOTIFICATION){
+		memcpy(notif, server_buffer, 8);
+		notif[8] = '\0';
+		printf("SCTP Notification: %s\n", notif);
+		return(0);
+	}
+#else
+	length = read(Sfd, server_buffer, MAX_MSG);
+	// as TCP has no clue about packets, this 
+#endif
+
+	if(length == 0){	// may be a disconnect
+		printf(" ?? Server disconnected ??\n");
+		exit(0);			
+		return(-1);				
+	}
+
+	if(length < 0){	//  Probably no mesage waiting
+		return(0);
+	}
+		
+	// we have a message
+		
+	memcpy(&type, server_buffer, 2);
+
+int t = type & 0x0FFF;
+int s = (type & 0xF000) / 0x1000;
+printf("\n>----- Incoming stream %d   type %d   length %d \n", s, t, length);
+print_buffer(server_buffer, length);
+
+	return(type);
+	// note that returning the length is not necessary as we extract lenghth
+	// information from the contents of the message, also the 'stream' is 
+	// included in the 'type'.
+}
+
+int server_send(int length, unsigned char *send_bufferp){
+	int ret;
+	int type;
+	type = 0;
+	memcpy (&type, send_bufferp, 2);
+
+#ifdef SCTP			
+	int stream;
+	stream = (type & STREAMMASK) >> 12;
+	ret = sctp_sendmsg(Sfd, send_bufferp, (size_t)length,
+			 NULL, 0, 0, 0, (uint16_t)stream, 0, 0 );
+#else
+	ret = write(Sfd, send_bufferp, length);
+#endif
+
+	if(ret == length){
+		return(0);
+	}else if(ret == -1){
+		char* errmsg = strerror (errno);
+#ifndef SCTP			
+		// TCP error
+	 	printf("Error: server_send failed %s, type 0x%X, length %d\n", errmsg, type, length);
+
+#else
+	 	printf("Error: server_send failed %s, stream %d, msg 0x%X, length %d\n", errmsg, stream, i, length);
+	 	switch(errno){
+			case EWOULDBLOCK:
+				printf("The socket is marked nonblocking and the requested operation would block.\n");
+				break;
+			case EBADF: 
+				printf("The s argument is an invalid file descriptor.\n");
+				break;
+			case ENOTSOCK:
+				printf("The s argument is not a socket.\n");
+				break;
+			case EDESTADDRREQ:
+				printf("A destination address is required.\n");
+				break;
+			case EOPNOTSUPP:
+				printf("MSG_OOB is set as a flag.\n");
+				break;
+			case ENOBUFS:
+				printf("The system couldn't allocate an internal buffer. The operation may succeed when buffers become available.\n");
+				break;
+			case EPIPE:
+				printf("The socket is shutting down and no more writes are allowed.\n");
+				break;
+			case ENOTCONN:
+				printf("There is no established association.\n");
+				break;
+			case EINVAL:
+				printf("Control message length is incorrect.\n");
+				break;
+			case EFAULT:
+				printf("An invalid user space address was specified for a parameter.\n");
+				break;
+			case EMSGSIZE:
+				printf("The socket requires that the message be sent atomically, but the size of the message made this impossible.\n");
+				break;
+			case EAFNOSUPPORT:
+				printf("Address family of the specified destination address is other than AF_INET or AF_INET6.\n");
+				break;
+			default: 
+				printf("Error without any reason.\n");
+		}
+		return(-1);
+#endif
+	} // else
+ 	printf("Error: server_send sent %d of %d characters.\n", ret, length);
+	return(-2);
+}
+
+// utility to print packets in hex
+void print_buffer(unsigned char *buffer, int mlen){
+	int n = 0;
+	int p = 0;
+
+	while(n<mlen){
+		printf("%02x ", buffer[n]);
+		p = 0;
+		n++;
+		if(n%8 == 0) printf("   ");
+		if(n%16 == 0){
+			 printf("\n");
+			 p = 1;
+		}
+	}
+	if(p == 0) printf("\n");
+	printf("\n");
+}
+

@@ -1,0 +1,10 @@
+code-from-errno.lo: code-from-errno.c ../config.h gpg-error.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.4.5/include/stddef.h code-from-errno.h
+
+../config.h:
+
+gpg-error.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.4.5/include/stddef.h:
+
+code-from-errno.h:

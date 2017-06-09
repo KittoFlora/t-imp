@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/libgcrypt/CMakeFiles/EP_libgcrypt"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/libgcrypt/CMakeFiles/EP_libgcrypt.rule"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/libgcrypt/CMakeFiles/EP_libgcrypt-complete.rule"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/libgcrypt/libgcrypt-1.2.2/src/EP_libgcrypt-stamp/EP_libgcrypt-install.rule"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/libgcrypt/libgcrypt-1.2.2/src/EP_libgcrypt-stamp/EP_libgcrypt-mkdir.rule"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/libgcrypt/libgcrypt-1.2.2/src/EP_libgcrypt-stamp/EP_libgcrypt-download.rule"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/libgcrypt/libgcrypt-1.2.2/src/EP_libgcrypt-stamp/EP_libgcrypt-update.rule"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/libgcrypt/libgcrypt-1.2.2/src/EP_libgcrypt-stamp/EP_libgcrypt-patch.rule"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/libgcrypt/libgcrypt-1.2.2/src/EP_libgcrypt-stamp/EP_libgcrypt-configure.rule"
+		},
+		{
+			"file" : "/home/kitto/PROJECTS/t-imp/linden/indra/libgcrypt/libgcrypt-1.2.2/src/EP_libgcrypt-stamp/EP_libgcrypt-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"EP_libgcrypt"
+		],
+		"name" : "EP_libgcrypt"
+	}
+}

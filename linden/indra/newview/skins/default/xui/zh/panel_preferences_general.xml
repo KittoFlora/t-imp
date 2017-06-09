@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<panel label="一般选项" name="general_panel">
+	<combo_box
+		 name="default_location_combo"
+		 allow_text_entry="true"
+		 max_chars="128">
+		<combo_item
+			 name="MyHome"
+			 value="My Home">
+		  我的家
+		</combo_item>
+		<combo_item
+			 name="MyLastLocation"
+			 value="My Last Location">
+		  我最后在的位置
+		</combo_item>
+		<combo_item
+			 name="Typeregionname"
+			 value="&lt;Type region name&gt;">
+		  &lt;输入地域名&gt;
+		</combo_item>
+	</combo_box>
+	<check_box label="在登陆界面上显示" name="show_location_checkbox"/>
+	<button
+		 name="grid_btn"
+		 label="网格管理器" />
+	<combo_box name="fade_out_combobox">
+		<combo_item name="Never">
+			从不显示
+		</combo_item>
+		<combo_item name="Show Temporarily">
+			短暂地显示
+		</combo_item>
+		<combo_item name="Always">
+			总是显示
+		</combo_item>
+	</combo_box>
+	<check_box label="放大姓名标签" name="large_avatar_names_checkbox"/>
+	<check_box label="在我的屏幕上隐藏我的名字" name="show_my_name_checkbox"/>
+	<check_box
+		 label="粗体显示好友的姓名标签"
+		 name="highlight_friends_checkbox" />
+	<text
+		 name="Display_Names_textbox">
+		显示名称:
+	</text>
+	<radio_group
+		 name="displaynames">
+		<radio_item
+			 name="0">
+		经典名字
+		</radio_item>
+		<radio_item
+			 name="1">
+		显示名称
+		</radio_item>
+		<radio_item
+			 name="2">
+		两者都显示
+		</radio_item>
+	</radio_group>
+	<check_box
+		 label="显示好友的经典名字"
+		 name="legacy_friends_checkbox" />
+	<text name="group_titles_textbox">
+		社团头衔:
+	</text>
+	<text
+		 name="show_names_textbox">
+		姓名标签:
+	</text>
+	<check_box label="隐藏所有社团头衔" name="show_all_title_checkbox"/>
+	<check_box label="隐藏我的社团头衔" name="show_my_title_checkbox"/>
+	<color_swatch label="" name="effect_color_swatch" tool_tip="点击这里来打开色彩选择器"/>
+	<text name="UI Size:">
+		界面尺寸:
+	</text>
+	<check_box bottom="-236" label="使用分辨率无关尺寸" left="148" name="ui_auto_scale" width="256"/>
+  <button
+		 label="重置"
+		 label_selected="重置"
+		 name="reset_ui_size" />
+ <text
+		 name="afk_textbox">
+    空闲时离开:
+  </text>
+	<spinner label="离开休息计时:" name="afk_timeout_spinner"/>
+	<check_box
+		 label="空闲时进入离开状态"
+		 name="afk_timeout_checkbox" />
+
+	<text
+		 name="Mini-Map Notify:">
+	迷你地图提醒:
+	</text>
+	<text name="maturity_desired_label">
+		分级：
+	</text>
+	<text name="maturity_desired_prompt">
+		我希望访问以下级别的内容：
+	</text>
+	<combo_box name="maturity_desired_combobox">
+		<combo_item name="Desired_Adult">
+			PG、Mature 和 Adult
+		</combo_item>
+		<combo_item name="Desired_Mature">
+			PG 和 Mature
+		</combo_item>
+		<combo_item name="Desired_PG">
+			仅限 PG
+		</combo_item>
+	</combo_box>
+	<text name="maturity_desired_textbox">
+		仅限 PG
+	</text>
+	<text
+		name="time_textbox">
+	时钟:
+	</text>
+	<combo_box
+		 allow_text_entry="false"
+		 max_chars="20"
+		 name="time_combobox">
+		<combo_item
+			 name="12HourTime"
+			 value="PST 12">
+			12小时 太平洋标准/夏令时
+		</combo_item>
+		<combo_item
+			 name="24HourTime"
+			 value="PST 24">
+			24小时 太平洋标准/夏令时
+		</combo_item>
+		<combo_item
+			 name="UTCTime"
+			 value="UTC">
+			协调世界时
+		</combo_item>
+	</combo_box>
+	<text length="1" name="start_location_textbox" type="string">
+		起始位置:
+	</text>
+	<text length="1" name="effects_color_textbox" type="string">
+		我的效果颜色:
+	</text>
+	<text length="1" name="minutes_textbox" type="string">
+		分钟
+	</text>
+	<text length="1" name="crash_report_textbox" type="string">
+		崩溃报告:
+	</text>
+	<text length="1" name="language_textbox" type="string">
+		语言:
+	</text>
+	<text length="1" name="language_textbox2" type="string">
+		（要使更改完全生效，需重新启动程序）
+	</text>
+	<string name="region_name_prompt">
+		&lt;输入地域名&gt;
+	</string>
+	<combo_box name="crash_behavior_combobox">
+		<combo_item length="1" name="Askbeforesending" type="string">
+			在发送之前询问
+		</combo_item>
+		<combo_item length="1" name="Alwayssend" type="string">
+			总是发送
+		</combo_item>
+		<combo_item length="1" name="Neversend" type="string">
+			从不发送
+		</combo_item>
+	</combo_box>
+	<combo_box name="language_combobox">
+		<combo_item name="System Default Language">
+			系统默认值
+		</combo_item>
+		<combo_item name="English">
+			English （英语）
+		</combo_item>
+		<combo_item name="Danish">
+			Dansk （丹麦）- 测试版
+		</combo_item>
+		<combo_item name="Deutsch(German)">
+			Deutsch （德语）- 测试版
+		</combo_item>
+		<combo_item name="Spanish">
+			Español （西班牙语）- 测试版
+		</combo_item>
+		<combo_item name="French">
+			Français （法语）- 测试版
+		</combo_item>
+		<combo_item name="Italian">
+			Italiano （意大利语）- 测试版
+		</combo_item>
+		<combo_item name="Hungarian">
+			Magyar 马札儿语（匈牙利）- 测试版
+		</combo_item>
+		<combo_item name="Dutch">
+			Nederlands （荷兰语）- 测试版
+		</combo_item>
+		<combo_item name="Polish">
+			Polski （波兰）- 测试版
+		</combo_item>
+		<combo_item name="Portugese">
+			Português （葡萄牙语）- 测试版
+		</combo_item>
+		<combo_item name="Russian">
+			Русский （俄罗斯语）- 测试版
+		</combo_item>
+		<combo_item name="Turkish">
+			Türkçe （土耳其语）- 测试版
+		</combo_item>
+		<combo_item name="Ukrainian">
+			Українська （乌克兰语）- 测试版
+		</combo_item>
+		<combo_item name="Chinese">
+			中文 （简体）- 测试版
+		</combo_item>
+		<combo_item name="(Japanese)">
+			日本語 （日语）- 测试版
+		</combo_item>
+		<combo_item name="(Korean)">
+			한국어 （朝鲜语）- 测试版
+		</combo_item>
+	</combo_box>
+	<check_box label="与物体共享语言" name="language_is_public" tool_tip="这使得世界内的物体可以知道你偏好的语言。"/>
+</panel>

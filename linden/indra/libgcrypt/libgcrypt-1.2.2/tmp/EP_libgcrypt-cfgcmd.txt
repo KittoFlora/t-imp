@@ -1,0 +1,1 @@
+cmd='<SOURCE_DIR>/configure;-prefix=<INSTALL_DIR>;--with-gpg-error-prefix=/home/kitto/PROJECTS/t-imp/linden/indra/libgcrypt/../libgpg-error/libgpg-error-1.0'

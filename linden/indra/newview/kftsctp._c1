@@ -1,0 +1,295 @@
+// tsctp.c  TPS SCTP handler
+
+#include <netdb.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/sctp.h>
+#include <uuid/uuid.h>
+#include <openssl/md5.h>
+
+#include "kftsctp.h"
+
+#define MAX_MESSAGE_SIZE 2048
+#define AV_NAME_SIZE 16
+#define AV_PW_SIZE 32		// raw password 
+#define SUCCESS 0
+#define FAILURE -1
+
+float Version = 0.1;
+int Sfd;	// file descriptor for socket
+char NameF[AV_NAME_SIZE + 1];		// fixed, FIRST
+char NameL[AV_NAME_SIZE + 1];		// fixed, LAST
+char Passwd[AV_PW_SIZE + 1];
+
+int strtest(char *string){
+	strcat(string, " One Two Three.");
+	return(5);	
+}
+
+
+int sctp_connect(const char* ip, const char* port){
+	// returns -2 for bad address, -1 for connect fail, 0 for success;
+	struct addrinfo hints;
+	struct addrinfo *result, *rp;
+	struct sctp_event_subscribe events;
+//	struct sctp_status status;
+//	int in, ret;
+
+	int error;
+	
+	/* Obtain address(es) matching host/port */
+	memset(&hints, 0, sizeof(struct addrinfo));
+	hints.ai_family = AF_UNSPEC;	/* Allow IPv4 or IPv6 */
+	hints.ai_socktype = SOCK_STREAM; 
+	hints.ai_flags = 0;
+	hints.ai_protocol = IPPROTO_SCTP;
+
+	error = getaddrinfo(ip, port, &hints, &result);
+	if (error != 0) {
+		printf("Error: getaddrinfo: %s\n", gai_strerror(error));
+		return(-2);
+	}
+
+	/* getaddrinfo() returns a list of address structures.
+	Try each address until we successfully connect(2).
+	If socket(2) (or connect(2)) fails, we (close the socket
+	and) try the next address. */
+
+	for (rp = result; rp != NULL; rp = rp->ai_next) {
+		Sfd = socket(rp->ai_family, rp->ai_socktype, rp->ai_protocol);
+		if (Sfd == -1) continue;  // failed
+		if (connect(Sfd, rp->ai_addr, rp->ai_addrlen) != -1)
+			break;	// Success!
+		close(Sfd); // try the next one
+	}
+
+	if (rp == NULL) { // No address succeeded
+		fprintf(stderr, "Could not connect\n");
+		return(-1);
+	} // else rp conatins the address that we have connected to
+
+	freeaddrinfo(result);	// No longer needed
+	
+	/* Enable receipt of SCTP Snd/Rcv Data via sctp_recvmsg */
+	memset( (void *)&events, 0, sizeof(events) );
+	events.sctp_data_io_event = 1;
+	error = setsockopt( Sfd, SOL_SCTP, SCTP_EVENTS,
+						   (const void *)&events, sizeof(events) );
+
+	/* Read and emit the status of the Socket (optional step) * /
+	in = sizeof(status);
+	ret = getsockopt( Sfd, SOL_SCTP, SCTP_STATUS,
+					 (void *)&status, (socklen_t *)&in );
+	printf("assoc id	= %d\n", status.sstat_assoc_id );
+	printf("state	 = %d\n", status.sstat_state );
+	printf("instrms   = %d\n", status.sstat_instrms );
+	printf("outstrms  = %d\n", status.sstat_outstrms );   */
+
+	return(0);
+}
+
+int sctp_disconnect(){
+	close(Sfd);
+}
+
+int scpt_validate(const char *first, const char *last, const char *password){
+	// attempt login, returns 0 for no response, 
+	// +number for message received, success, -number for failure
+	int ret = 0;
+
+
+	strcpy(NameF, first);
+	strcpy(NameL, last);
+	strcpy(Passwd, password);
+	ret = sctp_receive();
+printf("-----------'%s' '%s' '%s'", first, last, password); 
+	return(ret);
+}	
+
+	
+int sctp_receive(){
+	// check for an incoming message, returns 0 for no message, 
+	// +number for message received, success, -number for failure
+
+	unsigned char recv_buffer[MAX_MESSAGE_SIZE];
+	struct sctp_sndrcvinfo sndrcvinfo;
+	int length;
+	int flags;
+	int stream;
+	char notif[9];
+
+	length = sctp_recvmsg(Sfd, (void *)recv_buffer, MAX_MESSAGE_SIZE,
+		(struct sockaddr *)NULL, 0, &sndrcvinfo, &flags );
+			
+	stream = sndrcvinfo.sinfo_stream;
+	if(flags & MSG_NOTIFICATION){
+		memcpy(notif, recv_buffer, 8);
+		notif[8] = '\0';
+		printf("Notification: %s\n", notif);
+	}else{
+		if(length > 0){
+			printf("Received %d bytes on stream %d\n", length, stream);
+			return(tscpt_decode(recv_buffer, length));
+		}else{
+			// no message
+		}
+	}
+	return(0);
+}
+
+
+
+int tscpt_decode(unsigned char* recv_buffer, int length){
+	// returns 0 for bad message, +number for message received, success, -number for failure
+	unsigned char* ptr;
+	float ver;
+	int type;
+	int result;
+	int i;
+	int l;
+	char text[50];
+	int ret = 0; 
+	
+	printf("Received:\n");
+	print_buffer(recv_buffer, length);
+	
+	type = 0;
+	ptr = recv_buffer;
+	memcpy(&type, ptr, 2);
+	ptr += 2;
+	
+	switch(type){
+		case 0x0001:
+			// version is sent on connect
+			// also maybe Public Key, in future
+			memcpy(&ver, ptr, 4);
+			if(ver != Version){
+				printf("Version mismatch, Client=%f Server=%f\n", Version, ver);
+				ret = -1;
+			}else{
+				printf("Version ok = %f\n", ver);
+				try_login();
+				ret = 1;
+			}
+			break;
+		case 0x0003:
+			// login result
+			result = 0;
+			memcpy(&result, ptr, 1);
+			ptr ++;
+			length = 0;
+			memcpy(&l, ptr, 2);
+			ptr +=2;
+			memcpy(text, ptr, l);
+			ptr += l;
+			//result: -2=Bad name; -1=bad pw, 0=logged in, 1=ok, not logged in.
+			printf("%s    Code=%d\n", text, result);
+			if(result == 1){
+				ret = 3;
+			}else{
+				ret = -3;
+			}
+			break;
+		default:
+			printf("Unknown messag type %x\n", type);
+			break;
+			
+	}
+	return(ret);
+}
+
+void try_login(){
+//	const char password[17];
+	unsigned char passwdhash[32];
+	unsigned char message[50];
+	unsigned char* ptr;
+	int location;
+	int length;
+	int i;
+	
+	location = 0; 	// start at home
+	// hash the pw
+	md5(Passwd, passwdhash);
+printf("PW Hash %s\n",passwdhash);	
+	// Future: encode with Public Key
+	// assemble message
+	ptr = message;
+	i = 0x0002;		// type login message
+	memcpy(ptr, &i, 2);
+	ptr += 2;
+	strncpy((char *)ptr, "$1$", 3);	// pw prefix
+	ptr += 3;
+	memcpy(ptr, passwdhash, 32); // password hash
+	ptr += 32;
+	length = strlen(NameF) + strlen(NameL) + 1;
+	memcpy(ptr, &length, 1); // length of names
+	ptr += 1;
+	length = strlen(NameF);
+	strncpy((char *)ptr, NameF, length); //first
+	ptr += length;
+	strncpy((char *)ptr, ".", 1);			//.
+	ptr += 1;
+	length = strlen(NameL);		// last
+	strncpy((char *)ptr, NameL, length);
+	ptr += length;
+	memcpy(ptr, &location, 1);		// where
+	ptr += 1;
+	
+	length = ptr - message;
+print_buffer(message, length);
+	tscpt_send(message, length);	
+}
+
+/*Encode str to str_enc using md5 algorithm*/
+void md5(char *str, unsigned char *str_enc) {
+
+	int i = 0;
+	unsigned char d[16];
+	MD5_CTX ctx;
+
+	MD5_Init(&ctx);
+	MD5_Update (&ctx, (char *) str, strlen(str));
+	MD5_Final(d, &ctx);
+
+	for (i = 0; i < 16; i++) {
+		sprintf((char *)str_enc + (i*2), "%02X", d[i]);
+	}
+	str_enc[32] = 0;
+}
+
+
+
+int tscpt_send( unsigned char* message, int length){
+	int ret;
+	
+	ret = sctp_sendmsg(Sfd, message, (size_t)length,
+						 NULL, 0, 0, 0, 0, 0, 0 );
+	if(ret == length){
+		return(SUCCESS);
+	}
+	printf("Error: tscpt_send sent %d of %d characters.\n", ret, length);
+	return(FAILURE);
+}
+	
+	
+void print_buffer(unsigned char *buffer, int mlen){
+	int n = 0;
+	int p = 0;
+
+	while(n<mlen){
+		printf("%02x ", buffer[n]);
+		p = 0;
+		n++;
+		if(n%8 == 0) printf("   ");
+		if(n%16 == 0){
+			 printf("\n");
+			 p = 1;
+		}
+	}
+	if(p == 0) printf("\n");
+	printf("\n");
+}

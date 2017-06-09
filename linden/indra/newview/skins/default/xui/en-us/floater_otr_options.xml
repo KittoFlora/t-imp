@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<floater name="busy" title="OTR Options" 
+         height="175" width="180" min_height="175" min_width="180"
+         follows="top|right" can_close="true" can_drag_on_left="false"
+         can_minimize="true" can_resize="false" can_tear_off="false">
+
+      <button bottom="-40" follows="left|top" font="SansSerifSmall" 
+	      height="18" right="-10"
+	      name="otr_help_btn" width="98" label="What is OTR?"/>
+      <radio_group bottom="-120" draw_border="false" enabled="true" follows="left|top"
+		   height="80"
+		   left="10" mouse_opaque="true" name="EmeraldUseOTR" width="160">
+	<radio_item type="string" length="1" bottom_delta="-10" enabled="true" height="16"
+		    left_delta="0" mouse_opaque="true" name="0" width="98"
+		    tool_tip="Require use of OTR in IMs"
+		    >Require use of OTR in IMs</radio_item>
+	<radio_item type="string" length="1" bottom_delta="-10" enabled="true" height="16"
+		    left_delta="0" mouse_opaque="true" name="1" width="98"
+		    tool_tip="Request OTR if available."
+		    >Request OTR if available</radio_item>
+	<radio_item type="string" length="1" bottom_delta="-10" enabled="true" height="16"
+		    left_delta="0" mouse_opaque="true" name="2" width="98"
+		    tool_tip="Accept OTR requests."
+		    >Accept OTR requests</radio_item>
+	<radio_item type="string" length="1" bottom_delta="-10" enabled="true" height="16"
+		    left_delta="0" mouse_opaque="true" name="3" width="98"
+		    tool_tip="Decline use of OTR."
+		    >Decline use of OTR</radio_item>
+      </radio_group>
+      <check_box follows="left|top" left="10" bottom_delta="-20" enabled="true"
+		 font="SansSerifSmall"
+		 height="16" initial_value="false" mouse_opaque="true"
+		 name="EmeraldOTRInTypingStop-toggle"
+		 radio_style="false" width="98"
+		 control_name="EmeraldOTRInTypingStop"
+		 tool_tip="Put all OTR encrypted messages into IM_TYPING_STOP packets to prevent encrypted IM's from going to email."
+		 label="Use typing_stop for OTR"/>
+
+  <button bottom_delta="-26" follows="top|right" height="22" label="Cancel"
+     right="-10" name="btn_cancel" tool_tip="" enagled="true" width="80" />
+  <button bottom_delta="0" follows="top|right" height="22" label="OK"
+    right="-95" name="btn_ok" tool_tip="" enabled="true" width="80" />
+  
+</floater>

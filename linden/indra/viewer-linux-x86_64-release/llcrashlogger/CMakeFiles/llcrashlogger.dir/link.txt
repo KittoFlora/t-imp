@@ -1,0 +1,2 @@
+/usr/bin/ar qc libllcrashlogger.a  CMakeFiles/llcrashlogger.dir/llcrashlogger.o
+/usr/bin/ranlib libllcrashlogger.a

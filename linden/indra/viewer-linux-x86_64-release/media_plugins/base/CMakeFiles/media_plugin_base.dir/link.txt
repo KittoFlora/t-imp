@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmedia_plugin_base.a  CMakeFiles/media_plugin_base.dir/media_plugin_base.o
+/usr/bin/ranlib libmedia_plugin_base.a

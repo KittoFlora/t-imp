@@ -1,0 +1,118 @@
+# The set of languages for which implicit dependencies are needed:
+set(CMAKE_DEPENDS_LANGUAGES
+  "CXX"
+  )
+# The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llares.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llares.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llassetstorage.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llassetstorage.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llavatarnamecache.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llavatarnamecache.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llblowfishcipher.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llblowfishcipher.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llbuffer.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llbuffer.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llbufferstream.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llbufferstream.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llcachename.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llcachename.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llchainio.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llchainio.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llcircuit.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llcircuit.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llclassifiedflags.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llclassifiedflags.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llcurl.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llcurl.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/lldatapacker.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/lldatapacker.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/lldispatcher.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/lldispatcher.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llfiltersd2xmlrpc.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llfiltersd2xmlrpc.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llhost.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llhost.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llhttpassetstorage.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llhttpassetstorage.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llhttpclient.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llhttpclient.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llhttpclientadapter.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llhttpclientadapter.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llhttpnode.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llhttpnode.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llhttpsender.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llhttpsender.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llinstantmessage.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llinstantmessage.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/lliobuffer.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/lliobuffer.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/lliohttpserver.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/lliohttpserver.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/lliopipe.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/lliopipe.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/lliosocket.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/lliosocket.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llioutil.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llioutil.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llmail.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llmail.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llmessagebuilder.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llmessagebuilder.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llmessageconfig.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llmessageconfig.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llmessagelog.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llmessagelog.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llmessagereader.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llmessagereader.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llmessagetemplate.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llmessagetemplate.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llmessagetemplateparser.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llmessagetemplateparser.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llmessagethrottle.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llmessagethrottle.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llmime.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llmime.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llnamevalue.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llnamevalue.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llnullcipher.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llnullcipher.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llpacketack.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llpacketack.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llpacketbuffer.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llpacketbuffer.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llpacketring.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llpacketring.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llpartdata.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llpartdata.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llpumpio.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llpumpio.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llregionpresenceverifier.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llregionpresenceverifier.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llsdappservices.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llsdappservices.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llsdhttpserver.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llsdhttpserver.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llsdmessagebuilder.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llsdmessagebuilder.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llsdmessagereader.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llsdmessagereader.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llsdrpcclient.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llsdrpcclient.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llsdrpcserver.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llsdrpcserver.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llservice.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llservice.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llservicebuilder.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llservicebuilder.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llsocks5.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llsocks5.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llstoredmessage.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llstoredmessage.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/lltemplatemessagebuilder.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/lltemplatemessagebuilder.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/lltemplatemessagedispatcher.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/lltemplatemessagedispatcher.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/lltemplatemessagereader.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/lltemplatemessagereader.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llthrottle.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llthrottle.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/lltransfermanager.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/lltransfermanager.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/lltransfersourceasset.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/lltransfersourceasset.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/lltransfersourcefile.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/lltransfersourcefile.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/lltransfertargetfile.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/lltransfertargetfile.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/lltransfertargetvfile.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/lltransfertargetvfile.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/lltrustedmessageservice.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/lltrustedmessageservice.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llurlrequest.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llurlrequest.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/lluseroperation.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/lluseroperation.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llxfer.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llxfer.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llxfer_file.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llxfer_file.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llxfer_mem.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llxfer_mem.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llxfer_vfile.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llxfer_vfile.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llxfermanager.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llxfermanager.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/llxorcipher.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/llxorcipher.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/message.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/message.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/message_prehash.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/message_prehash.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/message_string_table.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/message_string_table.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/net.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/net.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/partsyspacket.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/partsyspacket.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/patch_code.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/patch_code.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/patch_dct.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/patch_dct.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/patch_idct.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/patch_idct.o"
+  "/home/kitto/PROJECTS/t-imp/linden/indra/llmessage/sound_ids.cpp" "/home/kitto/PROJECTS/t-imp/linden/indra/viewer-linux-x86_64-release/llmessage/CMakeFiles/llmessage.dir/sound_ids.o"
+  )
+set(CMAKE_CXX_COMPILER_ID "GNU")
+
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_CXX
+  "APPID=metaImpy"
+  "LINUX64=1"
+  "LL_IGNORE_SIGCHLD"
+  "LL_LINUX=1"
+  "USE_OTR=1"
+  "_FORTIFY_SOURCE=2"
+  "_REENTRANT"
+  )
+
+# The include file search paths:
+set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../llmessage"
+  "../llcommon"
+  "../../libraries/x86_64-linux/include/apr-1"
+  "../../libraries/include"
+  "../llmath"
+  "../../libraries/include/ares"
+  "../../libraries/x86_64-linux/include"
+  "../llvfs"
+  )
+
+# Targets to which this target links.
+set(CMAKE_TARGET_LINKED_INFO_FILES
+  )
+
+# Fortran module output directory.
+set(CMAKE_Fortran_TARGET_MODULE_DIR "")

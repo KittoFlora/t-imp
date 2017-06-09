@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<panel name="groups">
+	<scroll_list
+			 name="group list">
+		<column
+				 label="社团名称"
+				 name="name" />
+		<column
+				 label="通知"
+				 name="receive_notices"
+				 tool_tip="接受该社团的通知" />
+		<column
+				 label="聊天"
+				 name="join_group_chat"
+				 tool_tip="参加该社团的社团聊天" />
+		<column
+				 label="公开"
+				 name="list_in_profile"
+				 image="ff_visible_online_button.tga"
+				 tool_tip="在你的档案中列出该社团" />
+	</scroll_list>
+	<text name="groupdesc" >
+		您当前激活的社团以粗体表示。
+	</text>
+	<text name="groupcount" >
+		您现在属于 [COUNT] 个社团 (最大 [MAX] 个)。
+	</text>
+	<button
+		 label="聊天/呼叫"
+		 name="IM"
+		 tool_tip="打开即时通信会话" />
+	<button
+		 label="信息"
+		 name="Info" />
+	<button
+		 label="激活"
+		 name="Activate" />
+	<button
+		 label="头衔..."
+		 name="Titles..." />
+	<button
+		 label="邀请..."
+		 name="Invite..." />
+	<button
+		 label="离开"
+		 name="Leave" />
+	<button
+		 label="创建..."
+		 name="Create" />
+	<button
+		 label="搜索..."
+		 name="Search..." />
+	<search_editor 
+  		name="group_search"
+		label="搜索你的社团" />
+</panel>
+<!--Translated for Second Life 1.19.0 (79185)-->
